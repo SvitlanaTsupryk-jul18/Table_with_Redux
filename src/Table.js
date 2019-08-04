@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from './User'
 
-const Table = ({ users }) => (
+const Table = ({ users = [] }) => (
     <table className="table-users">
         <thead>
             <tr>
@@ -13,7 +13,6 @@ const Table = ({ users }) => (
             </tr>
         </thead>
         <tbody>
-
             {users.map(user => (
                 <User
                     key={user.id}

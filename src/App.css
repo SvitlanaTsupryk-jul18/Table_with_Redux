@@ -1,27 +1,22 @@
 .App {
   text-align: center;
-  font-size: 18px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Oxygen', sans-serif;
   color: darkslategray;
 }
 
-.TodoList td{
-background-color: #dbc1e1;
-font-family: 'Italianno', cursive;
-font-size: 28px;
+.table-users{
+  margin: 20px;
+}
+.table-users td {
+  background-color: #dbc1e1;
 }
 
-.TodoList th {
+.table-users th {
   cursor: pointer;
   background-color: aquamarine;
   padding: 10px;
   color: #EC93A2;
   text-transform: uppercase;
-}
-
-.TodoList .active {
-  background-color: #61dafb;
-  font-weight: bold;
 }
 
 li {

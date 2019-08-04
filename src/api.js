@@ -4,6 +4,6 @@ const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
 export const getUsers = async () => {
     const response = await fetch(proxyUrl + BASE_URL);
-    const users = await response.json();
-    return users;
+    const data = await response.json();
+    return data.users;
 };
