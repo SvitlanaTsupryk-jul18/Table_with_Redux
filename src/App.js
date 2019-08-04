@@ -1,26 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { getUsers } from './api';
+import { connect } from 'react-redux';
+import Table from './Table';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  async componentDidMount() {
+    const { setUsers } = this.props;
+
+    const users = await getUsers();
+    setUsers(users);
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Table of users</h1>
+        <Table />
+        {/* <Pagination /> */}
+      </div>);
+  }
 }
 
-export default App;
+
+const mapState = (state) => ({
+  // visibleTodos: [],
+  // query: '',
+});
+
+const mapDispatch = (dispatch) => ({
+  setUsers: (users) => dispatch({ type: "SET_USERS", users: users }),
+  // loadData: () => dispatch(loadDataAction),
+});
+
+export default connect(null, mapDispatch)(App);
