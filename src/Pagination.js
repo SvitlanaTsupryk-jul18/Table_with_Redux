@@ -4,19 +4,40 @@ import { CHANGE_PAGE } from './redux/store'
 
 export const perPage = 5;
 
-const Pagination = ({ changePage }) => (
-    <div className="pagination" onClick={(e) => changePage(e)}>
-        <button type="button" name="prev" value="prev">{"<"}</button>
-        <button type="button" name="1" value="1">1</button>
-        <button type="button" name="2" value="2">2</button>
-        <button type="button" name="3" value="3">3</button>
-        <button type="button" name="4" value="4">4</button>
-        <button type="button" name="next" value="next">></button>
-    </div>
-)
+class Pagination extends React.Component {
+    render() {
+        const { changePage, users, currentPage } = this.props;
+        const pageNumbers = [];
+
+        for (let i = 1; i <= Math.ceil(users.length / perPage); i++) {
+            pageNumbers.push(i);
+        }
+
+
+        return (
+            <div className="pagination">
+                <button type="button" name="prev" value="prev" onClick={() => changePage("prev")} > {"<"}</button>
+                {pageNumbers.map(number =>
+                    <button key={number}
+                        onClick={() => changePage(number)}>
+                        {number}
+                    </button>
+                )}
+                <button type="button" name="next" value="next" onClick={() => changePage("next")} >></button>
+            </div>
+        )
+    }
+}
+
+const mapState = (state) => {
+    return {
+        users: state.users,
+        currentPage: state.currentPage
+    };
+};
 
 const mapDispatch = (dispatch) => ({
-    changePage: (event) => dispatch({ type: CHANGE_PAGE, target: event.target, value: event.target.value }),
+    changePage: (currentPage) => dispatch({ type: CHANGE_PAGE, currentPage: currentPage }),
 });
 
-export default connect(null, mapDispatch)(Pagination);
+export default connect(mapState, mapDispatch)(Pagination);
