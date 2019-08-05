@@ -1,4 +1,6 @@
 import { createStore } from 'redux';
+export const SET_USERS = "SET_USERS";
+export const CHANGE_PAGE = "CHANGE_PAGE";
 
 const initialState = {
     users: [],
@@ -7,12 +9,12 @@ const initialState = {
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case "SET_USERS":
+        case SET_USERS:
             return {
                 ...state,
                 users: action.users,
             }
-        case "CHANGE_PAGE":
+        case CHANGE_PAGE:
             let value = action.value;
             if (!action.target === "button") {
                 return state

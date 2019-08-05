@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { CHANGE_PAGE } from './redux/store'
 
-export const per_page = 5;
+export const perPage = 5;
 
 const Pagination = ({ changePage }) => (
     <div className="pagination" onClick={(e) => changePage(e)}>
@@ -15,7 +16,7 @@ const Pagination = ({ changePage }) => (
 )
 
 const mapDispatch = (dispatch) => ({
-    changePage: (event) => dispatch({ type: "CHANGE_PAGE", target: event.target, value: event.target.value }),
+    changePage: (event) => dispatch({ type: CHANGE_PAGE, target: event.target, value: event.target.value }),
 });
 
 export default connect(null, mapDispatch)(Pagination);

@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-import { getUsers } from './api';
+import { getUsers } from './helpers/api';
 import { connect } from 'react-redux';
 import Table from './Table';
 import Pagination from './Pagination';
+import { SET_USERS } from './redux/store'
 
 class App extends React.Component {
   async componentDidMount() {
@@ -29,7 +30,7 @@ const mapState = (state) => {
 };
 
 const mapDispatch = (dispatch) => ({
-  setUsers: (users) => dispatch({ type: "SET_USERS", users: users }),
+  setUsers: (users) => dispatch({ type: SET_USERS, users: users }),
 });
 
 export default connect(mapState, mapDispatch)(App);
