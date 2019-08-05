@@ -40,7 +40,7 @@ li {
    margin: 0 auto;
 }
 
-.pagination button{
+.pagination__btn{
   padding: 10px 20px;
   color: #fff;
   background-color: coral;
@@ -53,7 +53,7 @@ li {
   font-size: 1.1em;
 }
 
-.pagination button:hover,  .pagination button:focus, .pagination .focused{
+.pagination__btn:hover,  .pagination__btn:focus, .focused{
   background-color: chocolate;
   outline: none;
 }

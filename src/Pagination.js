@@ -15,15 +15,15 @@ class Pagination extends React.Component {
 
         return (
             <div className="pagination">
-                <button type="button" name="prev" value="prev" onClick={() => changePage("prev")} > {"<"}</button>
+                <button type="button" name="prev" value="prev" onClick={() => changePage("prev")} className="pagination__btn"> {"<"}</button>
                 {pageNumbers.map(number =>
                     <button key={number}
                         onClick={() => changePage(number)}
-                        className={number === currentPage ? "focused" : "not"} >
+                        className={number === currentPage ? "pagination__btn focused" : "pagination__btn"} >
                         {number}
                     </button>
                 )}
-                <button type="button" name="next" value="next" onClick={() => changePage("next")} >></button>
+                <button type="button" name="next" value="next" onClick={() => changePage("next")} className="pagination__btn">></button>
             </div>
         )
     }
