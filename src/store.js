@@ -1,5 +1,7 @@
 // import { createStore, combineReducers } from 'redux';
 import { createStore } from 'redux';
+import { per_page } from './Pagination'
+
 
 const initialState = {
     users: [],
@@ -21,8 +23,17 @@ export const setUsers = (users) => {
     return {
         type: "SET_USERS",
         users: users,
+        // value: 1,
+        // currentPage: 1
     };
 };
+
+// export const changePage = (event) => {
+//     return {
+//         type: "CHANGE_PAGE",
+//         value: event.target.value,
+//     };
+// };
 
 
 
@@ -32,6 +43,31 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 users: action.users,
+            }
+        case "CHANGE_PAGE":
+            let value = action.value;
+            if (!action.target === "button") {
+                return state
+            }
+            if (value === "next") {
+                if (state.currentPage < 4) {
+                    return {
+                        ...state,
+                        currentPage: state.currentPage + 1
+                    }
+                } else return state;
+            }
+            if (value === "prev") {
+                if (state.currentPage > 1) {
+                    return {
+                        ...state,
+                        currentPage: state.currentPage - 1
+                    }
+                } else return state;
+            }
+            return {
+                ...state,
+                currentPage: +value
             }
         default:
             return state;

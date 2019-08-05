@@ -3,6 +3,7 @@ import './App.css';
 import { getUsers } from './api';
 import { connect } from 'react-redux';
 import Table from './Table';
+import Pagination from './Pagination';
 
 class App extends React.Component {
   async componentDidMount() {
@@ -17,7 +18,7 @@ class App extends React.Component {
       <div className="App">
         <h1>Table of users</h1>
         <Table />
-        {/* <Pagination /> */}
+        <Pagination />
       </div>);
   }
 }

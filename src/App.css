@@ -1,7 +1,16 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
   font-family: 'Oxygen', sans-serif;
   color: darkslategray;
+  background-color: #FFFF88;
+  padding-bottom: 20px;
+  height: 100vh;
 }
 
 .table-users{
@@ -9,6 +18,7 @@
 }
 .table-users td {
   background-color: #dbc1e1;
+  padding: 5px;
 }
 
 .table-users th {
@@ -26,7 +36,11 @@ li {
   display: flex;
 }
 
-.btn_load {
+.pagination {
+   margin: 0 auto;
+}
+
+.pagination button{
   padding: 10px 20px;
   color: #fff;
   background-color: coral;
@@ -39,8 +53,9 @@ li {
   font-size: 1.1em;
 }
 
-.btn_load:hover {
+.pagination button:hover,  .pagination button:focus{
   background-color: chocolate;
+  outline: none;
 }
 
 .list {

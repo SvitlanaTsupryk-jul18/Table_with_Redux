@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import User from './User'
+import { per_page } from './Pagination'
 
-const Table = ({ users = [] }) => (
+const Table = ({ users = [], currentPage }) => (
     <table className="table-users">
         <thead>
             <tr>
@@ -13,19 +14,21 @@ const Table = ({ users = [] }) => (
             </tr>
         </thead>
         <tbody>
-            {users.map(user => (
-                <User
-                    key={user.id}
-                    user={user}
-                />
-            ))}
+            {users.filter(user => ((user.id > currentPage * per_page - per_page) && (user.id <= currentPage * per_page)))
+                .map(user => (
+                    <User
+                        key={user.id}
+                        user={user}
+                    />
+                ))}
         </tbody>
     </table>
 );
 
 const mapState = (state) => {
     return {
-        users: state.users
+        users: state.users,
+        currentPage: state.currentPage
     };
 };
 
