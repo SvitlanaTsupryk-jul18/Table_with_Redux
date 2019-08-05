@@ -32,6 +32,4 @@ const mapState = (state) => {
     };
 };
 
-
-// export default Table;
 export default connect(mapState)(Table);
