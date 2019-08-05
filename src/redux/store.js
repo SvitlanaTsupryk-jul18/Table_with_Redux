@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import { perPage } from '../Pagination';
 export const SET_USERS = "SET_USERS";
 export const CHANGE_PAGE = "CHANGE_PAGE";
 
@@ -16,9 +17,8 @@ const reducer = (state, action) => {
             }
         case CHANGE_PAGE:
             let value = action.currentPage;
-            console.log(action.currentPage);
             if (value === "next") {
-                if (state.currentPage < 4) {
+                if (state.currentPage < perPage - 1) {
                     return {
                         ...state,
                         currentPage: state.currentPage + 1

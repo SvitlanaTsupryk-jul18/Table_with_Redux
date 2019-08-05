@@ -13,13 +13,13 @@ class Pagination extends React.Component {
             pageNumbers.push(i);
         }
 
-
         return (
             <div className="pagination">
                 <button type="button" name="prev" value="prev" onClick={() => changePage("prev")} > {"<"}</button>
                 {pageNumbers.map(number =>
                     <button key={number}
-                        onClick={() => changePage(number)}>
+                        onClick={() => changePage(number)}
+                        className={number === currentPage ? "focused" : "not"} >
                         {number}
                     </button>
                 )}
