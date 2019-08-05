@@ -44,10 +44,6 @@ const reducer = (state, action) => {
 
 const store = createStore(reducer, initialState);
 
-store.subscribe(() => {
-    console.log(store.getState());
-})
-
 export default store;
 
 export const usersCount = (state) => {
